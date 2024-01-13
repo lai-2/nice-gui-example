@@ -11,37 +11,33 @@ export default {
         <strong>{{title}}</strong>
       </div>
       <div class="divider absolute right-0 top-0 h-screen
-        bg-red-600 cursor-col-resize" style="width:2px;"
+        bg-red-600 cursor-ew-resize	" style="width:2px;"
         @mousedown="mousedown"
-        @mouseup="mouseup"
-        @mouseenter="mouseenter"
-        @mousemove="mousemove"
         >
       </div>
     `,
   style: {},
   methods: {
-    mousedown(e) {
-      console.log(`mouse down ${e.x}`);
+    mousedown() {
+      this.isDragging = true;
+      console.log("enter mouse down");
+      document.addEventListener("mousemove", this.drag);
+      document.addEventListener("mouseup", this.stopDrag);
     },
-    mouseup(e){
-      console.log(`mouse up ${e.x}`);
+    drag(e) {
+      if (this.isDragging) {
+        console.log("enter mouse drag and in if");
+        const newWidth = e.clientX;
+        this.sidebarWidth = newWidth;
+        this.$emit("change", newWidth);
+      }
     },
-
-    mouseenter(e){
-      console.log(`mouse enter ${e.x}`);
+    stopDrag() {
+      this.isDragging = false;
+      console.log("enter stopDrag");
+      document.removeEventListener("mousemove", this.drag);
+      document.removeEventListener("mouseup", this.stopDrag);
     },
-
-    mouseenter(e){
-      console.log(`mouse move ${e.x}`);
-    },
-    handle_click() {
-      this.width += 1;
-      this.$emit("change", this.width);
-    },
-    // reset() {
-    //   this.width = 0;
-    // },
   },
   props: {
     title: String,

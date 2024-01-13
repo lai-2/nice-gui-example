@@ -16,14 +16,21 @@ with ui.header(elevated=True).style("background-color: #3874c8").classes(
     )
 # with ui.left_drawer(top_corner=True, bottom_corner=True).style('background-color: #d7e3f4'):
 #     ui.label('LEFT DRAWER')
+width = 500
+
 with (
     ui.left_drawer(top_corner=True, bottom_corner=True)
     .style("background-color: #d7e3f4")
-    .props("width=500")
-):
+    .props(f"{width=}")
+) as left_drawer:
     # ui.label('LEFT DRAWER')
     # counter = LeftSidebar('Some title')
-    counter = Counter("some title init in main.py", on_change=lambda e: ui.notify(f'The value changed to {e.args}.'))
+    # left_drawer.props(f"width={e.args[0]}
+    counter = Counter(
+        "some title init in main.py",
+        # on_change=lambda e: ui.notify(f'change to value = {e.args}')
+        on_change=lambda e: left_drawer.props(f'width={e.args}')
+    )
 
     # with ui.card():
     # counter = LeftSidebar('Some title')
