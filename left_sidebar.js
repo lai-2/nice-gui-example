@@ -1,20 +1,26 @@
 export default {
   template: `
-    <button @click="handle_click">
-      <strong>{{title}}: {{value}}</strong>
-    </button>`,
+    <label for="name">Enter your name:</label>
+    <input
+      type="text"
+      id="name"
+      v-model="name"
+    />
+    <button @click="submit">
+      Submit
+    </button>
+  `,
   data() {
     return {
-      value: 0,
+      name: "",
     };
   },
   methods: {
-    handle_click() {
-      this.value += 1;
-      this.$emit("change", this.value);
+    submit() {
+      this.$emit("change", this.name);
     },
     reset() {
-      this.value = 0;
+      this.name = "";
     },
   },
   props: {
