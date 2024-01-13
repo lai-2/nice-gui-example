@@ -1,3 +1,15 @@
+# Description
+## How to run
+```sh
+pip install nicegui
+python3 main.py
+```
+## Main function
+1. Left sidebar can be resizable
+2. Add user input form (input name)
+3. Submit name (click Submit button), then this name will be displayed in main content
+4. Reset input.
+
 # **Assignment: NiceGUI App Development**
 
 ## **Objective:**
