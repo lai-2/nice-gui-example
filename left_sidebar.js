@@ -21,6 +21,7 @@ export default {
     },
     reset() {
       this.name = "";
+      this.$emit("change", '');
     },
   },
   props: {

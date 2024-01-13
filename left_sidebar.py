@@ -8,3 +8,6 @@ class LeftSidebar(Element, component="left_sidebar.js"):
         super().__init__()
         self._props["title"] = title
         self.on("change", on_change)
+
+    def reset(self):
+        self.run_method('reset')

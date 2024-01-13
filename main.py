@@ -19,6 +19,8 @@ with ui.left_drawer(top_corner=True, bottom_corner=True).style(
         "test left sidebar",
         on_change=lambda e: label.set_text(f'Your name is "{e.args}"' if e.args != "" else ""),
     )
+    ui.button('Reset', on_click=left_sidebar.reset).props('small outline')
+
 
 with ui.right_drawer(fixed=False).style("background-color: #ebf1fa").props(
     "bordered"
